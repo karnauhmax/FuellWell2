@@ -1,12 +1,14 @@
 .cooperation {
+ @include adaptiv-value(margin-bottom, 240, 120, 1);
+
  &__callback {
   text-align: center;
-  @include adaptiv-value(margin-bottom, 120, 50, 1);
+  @include adaptiv-value(margin-bottom, 140, 50, 1);
 
   &-title {
    color: var(--primary-color);
    font-weight: 900;
-   margin-bottom: 20px;
+   margin-bottom: 19px;
   }
 
   &-head {
@@ -15,10 +17,11 @@
  }
 
 
+
  &__form {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 196px));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 10px;
 
   @media screen and (max-width: 576px) {
@@ -37,6 +40,60 @@
   }
  }
 
+ &__title {
+  font-weight: 900;
+  text-align: center;
+  @include adaptiv-value(margin-bottom, 60, 30, 1);
+ }
+
+ &__inner {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(310px, 1fr));
+  gap: 30px;
+  counter-reset: counter;
+ }
+
+ &__wrapper {
+  display: flex;
+  flex-direction: column;
+
+  & picture {
+   align-self: flex-end;
+  }
+
+  &-undered {
+   padding-top: 40px;
+  }
+ }
+
+ &__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 88px 30px 20px 30px;
+  min-height: 260px;
+  position: relative;
 
 
+
+  &::before {
+   content: "step "counter(counter);
+   counter-increment: counter;
+   text-transform: uppercase;
+   font-weight: 900;
+   @include adaptiv-value(font-size, 35, 24, 1);
+   color: var(--primary-color);
+   top: 30px;
+   position: absolute;
+  }
+
+  & p {
+   margin-bottom: 20px;
+  }
+ }
+
+
+ &__link {
+  max-width: 240px;
+ }
 }

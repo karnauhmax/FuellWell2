@@ -1,0 +1,134 @@
+.faq {
+ background-color: var(--bg-extradark);
+ @include adaptiv-value(padding-top, 107, 50, 1);
+ @include adaptiv-value(padding-bottom, 95, 50, 1);
+ @include adaptiv-value(margin-bottom, 140, 50, 1);
+
+ &__title {
+  font-weight: 900;
+  text-align: center;
+  justify-self: center;
+  grid-column: 3 / 11;
+
+  @media screen and (max-width: 768px) {
+   grid-column: 1 / 7;
+   text-align: left;
+  }
+
+  @media screen and (max-width: 576px) {
+   grid-column: span 12;
+  }
+ }
+
+ &__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
+  row-gap: 33px;
+
+  @media screen and (max-width: 992px) {
+   grid-template-columns: 1fr;
+  }
+ }
+
+ &__item {
+  position: relative;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-color);
+  cursor: pointer;
+
+  &.active {
+   &::after {
+    transform: rotate(180deg);
+   }
+  }
+
+  &::after {
+   content: "";
+   position: absolute;
+   right: 0;
+   top: 8px;
+   background-image: url("../img/icons/vertical-arrow.svg");
+   background-repeat: no-repeat;
+   background-size: contain;
+   width: 20px;
+   height: 12px;
+   transition: transform .3s ease;
+  }
+
+  h3 {
+   max-width: 622px;
+   line-height: 140%;
+   font-weight: 400;
+   @include adaptiv-value(font-size, 24, 18, 1);
+   margin-right: 40px;
+  }
+
+  p {
+   font-size: 16px;
+   line-height: 140%;
+  }
+
+  &-content {
+   max-height: 0;
+   opacity: 0;
+   transition: .5s all ease;
+
+   &.active {
+    opacity: 1;
+    padding-top: 15px;
+    box-sizing: content-box;
+   }
+  }
+ }
+
+ &__head {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  @include adaptiv-value(margin-bottom, 85, 35, 1);
+  row-gap: 20px;
+ }
+
+ & .splide__arrows {
+  position: relative;
+  height: 30px;
+  grid-column: 12 / 13;
+ }
+
+ & .splide__arrow {
+  background: transparent;
+  opacity: 1;
+
+  & path {
+   transition: .5s all ease;
+  }
+
+  &:hover {
+   & path {
+    fill: var(--primary-color);
+   }
+  }
+ }
+
+ & .splide__arrow--prev {
+  right: 60px;
+  left: unset;
+
+
+  & svg {
+   width: 1.8em;
+   transform: rotate(0deg);
+  }
+
+ }
+
+ & .splide__arrow--next {
+  right: 0;
+
+  & svg {
+   width: 1.8em;
+  }
+ }
+}

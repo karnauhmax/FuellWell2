@@ -1,0 +1,42 @@
+.cooperation {
+ &__callback {
+  text-align: center;
+  @include adaptiv-value(margin-bottom, 120, 50, 1);
+
+  &-title {
+   color: var(--primary-color);
+   font-weight: 900;
+   margin-bottom: 20px;
+  }
+
+  &-head {
+   @include adaptiv-value(margin-bottom, 40, 25, 1);
+  }
+ }
+
+
+ &__form {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 196px));
+  gap: 10px;
+
+  @media screen and (max-width: 576px) {
+   grid-template-columns: 1fr;
+  }
+
+  &-btn {
+   @media screen and (max-width: 850px) {
+    max-width: 100%;
+    grid-column: span 2;
+   }
+
+   @media screen and (max-width: 576px) {
+    grid-column: span 1;
+   }
+  }
+ }
+
+
+
+}

@@ -1,0 +1,195 @@
+.efficiency {
+ position: relative;
+ @include adaptiv-value(margin-bottom, 130, 50, 1);
+
+ &__title {
+  text-transform: uppercase;
+  max-width: 500px;
+  font-weight: 900;
+  line-height: 140%;
+  // @include adaptiv-value(margin-bottom, 50, 25, 1);
+ }
+
+ &__img {
+  position: relative;
+  padding-bottom: 100%;
+ }
+
+ &__head {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  @include adaptiv-value(margin-bottom, 50, 25, 1);
+ }
+
+ &__arrows {
+  align-self: flex-end;
+ }
+
+ &__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-flow: column;
+  gap: 6px;
+ }
+
+ & .splide__arrows {
+  position: relative;
+  height: 30px;
+ }
+
+ & .splide__arrow {
+  background: transparent;
+  opacity: 1;
+
+  & path {
+   transition: .5s all ease;
+  }
+
+  &:hover {
+   & path {
+    fill: var(--primary-color);
+   }
+  }
+ }
+
+ & .splide__arrow--prev {
+  right: 60px;
+  left: unset;
+
+
+  & svg {
+   width: 1.8em;
+   transform: rotate(0deg);
+  }
+
+ }
+
+ & .splide__arrow--next {
+  right: 0;
+
+  & svg {
+   width: 1.8em;
+  }
+ }
+
+ &::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 421px;
+  height: 421px;
+  background: rgba(0, 213, 228, 1);
+  filter: blur(200px);
+  z-index: -1;
+ }
+
+
+
+ &__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-repeat: no-repeat;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+
+  &-descr {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   background: linear-gradient(188.83deg, rgba(29, 29, 29, 0.79) 6.72%, #000000 90.69%);
+   @include adaptiv-value(padding-top, 15, 10, 1);
+   @include adaptiv-value(padding-right, 30, 10, 1);
+   @include adaptiv-value(padding-bottom, 15, 10, 1);
+   @include adaptiv-value(padding-left, 33, 10, 1);
+
+   & h2 {
+    @include adaptiv-value(font-size, 24, 18, 1);
+    margin-bottom: 10px;
+    font-weight: 900;
+   }
+
+   & p {
+    @include adaptiv-value(font-size, 18, 14, 1);
+   }
+  }
+ }
+
+ &__media {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+
+  @media screen and (max-width: 992px) {
+   grid-template-columns: 1fr;
+  }
+ }
+
+ &__video {
+  position: relative;
+
+  &-item {
+   position: relative;
+
+   & video {
+    max-width: 100%;
+    min-height: 482px;
+    object-fit: cover;
+
+    @media screen and (max-width: 576px) {
+     min-height: 250px;
+    }
+   }
+
+   &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 99%;
+    z-index: 0;
+    background: linear-gradient(188.83deg, rgba(29, 29, 29, 0.28) 6.72%, rgba(1, 13, 14, 0.62) 90.69%);
+   }
+  }
+
+  &-btn {
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+  }
+
+  &-descr {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+
+   @include adaptiv-value(padding-top, 15, 10, 1);
+   @include adaptiv-value(padding-right, 30, 10, 1);
+   @include adaptiv-value(padding-bottom, 25, 10, 1);
+   @include adaptiv-value(padding-left, 35, 10, 1);
+
+   & h2 {
+    @include adaptiv-value(font-size, 24, 18, 1);
+    margin-bottom: 10px;
+    font-weight: 900;
+   }
+
+   & p {
+    @include adaptiv-value(font-size, 18, 14, 1);
+   }
+  }
+ }
+
+ &__video-wrapper {
+  position: relative;
+ }
+
+ &__misc {
+  display: flex;
+ }
+}

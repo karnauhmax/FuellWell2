@@ -2,6 +2,8 @@ import Tab from "./functions/tabs";
 import Splide from "@splidejs/splide";
 import DynamicAdapt from "./functions/dynamicAdapt";
 import { burger } from "./functions/burger";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 window.addEventListener("DOMContentLoaded", () => {
   //videos
@@ -52,7 +54,6 @@ window.addEventListener("DOMContentLoaded", () => {
   efficiencySlider.mount();
 
   let faqSlider = new Splide(".faq__slider", {
-    type: "loop",
     pagination: false,
     arrowPath:
       "M0.292893 6.78117C-0.0976295 7.1717 -0.0976296 7.80486 0.292892 8.19538L6.65685 14.5593C7.04738 14.9499 7.68054 14.9499 8.07107 14.5593C8.46159 14.1688 8.46159 13.5357 8.07107 13.1451L2.41422 7.48828L8.07107 1.83142C8.46159 1.4409 8.46159 0.807735 8.07107 0.417211C7.68054 0.0266861 7.04738 0.0266861 6.65685 0.41721L0.292893 6.78117ZM41 6.48828L1 6.48828L1 8.48828L41 8.48828L41 6.48828Z",
@@ -77,5 +78,27 @@ window.addEventListener("DOMContentLoaded", () => {
         content.style.maxHeight = null;
       }
     });
+  });
+
+  // animations
+
+  const tl = gsap.timeline();
+  const anim = gsap.timeline();
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from(".site-container", { opacity: 0, duration: 1 });
+
+  tl.from(".offer__title", { opacity: 0, duration: 0.5 })
+    .from(".offer__info", {
+      opacity: 0,
+      delay: 0.2,
+      duration: 0.5,
+    })
+    .from(".offer__video", { opacity: 0, delay: 0.3, duration: 0.5 })
+    .from(".offer__decor-item", { opacity: 0, delay: 0.4, duration: 0.5 });
+
+  gsap.from(".device__heading-title", {
+    scrollTrigger: ".device__heading-title",
+    opacity: 0,
+    duration: 2,
   });
 });

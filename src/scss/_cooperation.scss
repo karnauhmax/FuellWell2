@@ -1,5 +1,37 @@
 .cooperation {
- @include adaptiv-value(margin-bottom, 240, 120, 1);
+ @include adaptiv-value(margin-bottom, 150, 60, 1);
+ position: relative;
+
+ &::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 100%;
+  max-width: 421px;
+  height: 421px;
+  background: rgba(0, 213, 228, 1);
+  filter: blur(200px);
+  z-index: -1;
+
+  @media screen and (max-width: 768px) {
+   transform: translateX(35%);
+  }
+
+  @media screen and (max-width: 576px) {
+   top: 5%;
+  }
+
+  @media screen and (max-width: 475px) {
+   transform: translateX(80%);
+   max-width: 321px;
+   height: 321px;
+
+  }
+ }
+
+
 
  &__callback {
   text-align: center;
@@ -51,18 +83,53 @@
   grid-template-columns: repeat(3, minmax(310px, 1fr));
   gap: 30px;
   counter-reset: counter;
+
+  @media screen and (max-width: 1024px) {
+   grid-template-columns: 1fr;
+   gap: 50px;
+  }
  }
 
  &__wrapper {
   display: flex;
   flex-direction: column;
+  position: relative;
 
-  & picture {
-   align-self: flex-end;
+  &-bottom {
+   flex-direction: column-reverse;
   }
+
 
   &-undered {
    padding-top: 40px;
+  }
+ }
+
+ &__img {
+  align-self: flex-end;
+
+  @media screen and (max-width: 1024px) {
+   position: absolute;
+   max-width: 60px;
+  }
+
+
+  &-bottom {
+   margin-top: 10px;
+
+   @media screen and (max-width: 1024px) {
+    right: 10%;
+    transform: translate(0, 75%) rotate(-90deg) scaleX(-1);
+    bottom: 0;
+   }
+  }
+
+  &-top {
+   @media screen and (max-width: 1024px) {
+    left: 10%;
+    transform: translate(0, 80%) rotate(240deg) scaleX(-1);
+    bottom: 0;
+   }
   }
  }
 
@@ -73,8 +140,6 @@
   padding: 88px 30px 20px 30px;
   min-height: 260px;
   position: relative;
-
-
 
   &::before {
    content: "step "counter(counter);
@@ -89,8 +154,11 @@
 
   & p {
    margin-bottom: 20px;
+   line-height: 140%;
   }
  }
+
+
 
 
  &__link {

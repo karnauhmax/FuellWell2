@@ -185,6 +185,12 @@
    }
   }
 
+  &-img {
+   padding-bottom: 84%;
+   position: relative;
+   max-width: 620px;
+  }
+
   &-list {
    counter-reset: counter;
 

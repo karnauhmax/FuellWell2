@@ -81,24 +81,41 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 
   // animations
-
-  const tl = gsap.timeline();
-  const anim = gsap.timeline();
+  const master = gsap.timeline();
   gsap.registerPlugin(ScrollTrigger);
   gsap.from(".site-container", { opacity: 0, duration: 1 });
 
-  tl.from(".offer__title", { opacity: 0, duration: 0.5 })
-    .from(".offer__info", {
+  function device() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".device",
+        markers: true,
+        start: "top bottom",
+      },
+    });
+    tl.from(".device__heading-title", {
       opacity: 0,
-      delay: 0.2,
       duration: 0.5,
-    })
-    .from(".offer__video", { opacity: 0, delay: 0.3, duration: 0.5 })
-    .from(".offer__decor-item", { opacity: 0, delay: 0.4, duration: 0.5 });
+    });
 
-  gsap.from(".device__heading-title", {
-    scrollTrigger: ".device__heading-title",
-    opacity: 0,
-    duration: 2,
-  });
+    tl.from(".device__info-head", {
+      opacity: 0,
+      duration: 0.5,
+    });
+    tl.from(".device__info-body", {
+      opacity: 0,
+      duration: 0.5,
+    });
+
+    tl.from(".device__img", {
+      opacity: 0,
+      duration: 0.5,
+    });
+
+    return tl;
+  }
+
+  // .from(".device__heading-title", {opacity: 0, duration: 0.4, scrollTrigger: ".device__heading-title"})
+
+  master.add(device);
 });

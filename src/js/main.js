@@ -89,11 +89,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".device",
-        markers: true,
-        start: "top bottom",
+        start: "top 85%",
       },
     });
-    tl.from(".device__heading-title", {
+    tl.from(".device__heading", {
       opacity: 0,
       duration: 0.5,
     });
@@ -102,12 +101,12 @@ window.addEventListener("DOMContentLoaded", () => {
       opacity: 0,
       duration: 0.5,
     });
-    tl.from(".device__info-body", {
+
+    tl.from(".device__img", {
       opacity: 0,
       duration: 0.5,
     });
-
-    tl.from(".device__img", {
+    tl.from(".device__info-body", {
       opacity: 0,
       duration: 0.5,
     });
@@ -115,7 +114,107 @@ window.addEventListener("DOMContentLoaded", () => {
     return tl;
   }
 
-  // .from(".device__heading-title", {opacity: 0, duration: 0.4, scrollTrigger: ".device__heading-title"})
+  function benefits() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".benefits",
+        start: "top 20%",
+      },
+    });
 
-  master.add(device);
+    tl.from(".benefits__inner", { opacity: 0, duration: 0.5 });
+    tl.from(".benefits__title", { opacity: 0, duration: 0.5, delay: 0.5 });
+
+    return tl;
+  }
+
+  function additionalBenefits() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top bottom",
+        trigger: ".benefits__additional",
+      },
+    });
+
+    tl.from(".benefits__additional-img", { opacity: 0, duration: 0.5 });
+    tl.from(".benefits__additional-info", { opacity: 0, duration: 0.5 });
+    tl.from(".benefits__additional-title", { opacity: 0, duration: 0.7 });
+  }
+
+  function media() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top bottom",
+        trigger: ".media",
+      },
+    });
+
+    tl.from(".media__video", { opacity: 0, duration: 0.5 });
+    tl.from(".media__title", { opacity: 0, duration: 0.5 });
+  }
+
+  function efficiency() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top bottom",
+        trigger: ".efficiency",
+      },
+    });
+
+    tl.from(".efficiency__title", { opacity: 0, duration: 0.5 });
+    tl.from(".efficiency__slider", { opacity: 0, duration: 0.5 });
+    tl.from(".efficiency__media", { opacity: 0, duration: 0.5 });
+
+    return tl;
+  }
+
+  function reports() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top 50%",
+        trigger: ".reports__inner",
+      },
+    });
+
+    tl.from(".reports__main-title", { opacity: 0, duration: 0.5, delay: 0.5 });
+    tl.from(".reports__additional", { opacity: 0, duration: 0.5 });
+    return tl;
+  }
+
+  function faq() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top 70%",
+        trigger: ".faq",
+      },
+    });
+
+    tl.from(".faq__slider", { opacity: 0, duration: 1 });
+  }
+
+  function cooperation() {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        start: "top 45%",
+        trigger: ".cooperation",
+      },
+    });
+
+    tl.from(".cooperation__callback", { opacity: 0, duration: 0.5 });
+    tl.from(".cooperation__inner :nth-child(1)", { opacity: 0, duration: 1.2 });
+    tl.from(".cooperation__inner :nth-child(2)", { opacity: 0, duration: 1.2 });
+    tl.from(".cooperation__inner :nth-child(3)", { opacity: 0, duration: 1.2 });
+
+    return tl;
+  }
+
+  master
+    .add(device)
+    .add(benefits)
+    .add(additionalBenefits)
+    .add(media)
+    .add(efficiency)
+    .add(reports)
+    .add(faq)
+    .add(cooperation);
 });

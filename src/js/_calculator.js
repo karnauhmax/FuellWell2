@@ -1,7 +1,7 @@
 function euCalc(
   mileage,
-  cost,
   consumption,
+  cost,
   efficiency,
   co2Efficiency,
   co2DieselEfficiency
@@ -21,15 +21,50 @@ function euCalc(
   }
 }
 
-console.log(euCalc(100000, 1.88, 30, 10, 15, 2));
+console.log(euCalc(100000, 30, 1.88, 10, 15, 2));
 
-function naCalc(mileage, cost, consumption, efficiency) {
+function gbCalc(
+  mileage,
+  consumption,
+  cost,
+  efficiency,
+  co2Efficiency,
+  co2DieselEfficiency
+) {
   const result = (mileage / consumption) * cost;
   const economy = (result * efficiency) / 100;
-
-  return economy;
+  const co2 = co2DieselEfficiency * (mileage / consumption);
+  const co2Economy = (co2 * co2Efficiency) / 100;
+  const tempStorage = [
+    Math.floor(economy),
+    Math.floor(result),
+    Math.floor(co2),
+    Math.floor(co2Economy),
+  ];
+  return tempStorage;
 }
 
-console.log(naCalc(50000, 6.27, 5.48, 0.1));
+console.log(gbCalc(50000, 7.84, 8.78, 10, 15, 20.04));
 
-console.log((50000 * 6.27) / 5.48);
+function usCalc(
+  mileage,
+  consumption,
+  cost,
+  efficiency,
+  co2Efficiency,
+  co2DieselEfficiency
+) {
+  const result = (mileage / consumption) * cost;
+  const economy = (result * efficiency) / 100;
+  const co2 = co2DieselEfficiency * (mileage / consumption);
+  const co2Economy = (co2 * co2Efficiency) / 100;
+  const tempStorage = [
+    Math.floor(economy),
+    Math.floor(result),
+    Math.floor(co2),
+    Math.floor(co2Economy),
+  ];
+  return tempStorage;
+}
+
+console.log(usCalc(50000, 6.27, 5.48, 10, 15, 16.69));

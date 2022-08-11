@@ -217,4 +217,109 @@ window.addEventListener("DOMContentLoaded", () => {
     .add(reports)
     .add(faq)
     .add(cooperation);
+
+  //calc
+
+  const form = document.querySelector(".calculator__form");
+  const mileage = form.querySelector(".calculator__mileage");
+  const consumption = form.querySelector(".calculator__consumption");
+  const cost = form.querySelector(".calculator__cost");
+  const solution = document.querySelector(".calculator__solution");
+  const solutionCost = solution.querySelector(".calculator__solution-cost");
+  const solutionEmission = solution.querySelector(
+    ".calculator__solution-emission"
+  );
+  const savings = document.querySelector(".calculator__savings");
+  const savingsCost = savings.querySelector(".calculator__savings-cost");
+  const savingsEmission = savings.querySelector(
+    ".calculator__savings-emission"
+  );
+  const regionSelect = form.querySelector(".calculator__region");
+  const submitBtn = form.querySelector(".calculator__btn");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    checkValue(regionSelect);
+    solution.closest(".calculator__results").classList.add("active");
+    submitBtn.style.display = "none";
+  });
+
+  regionSelect.addEventListener("change", function () {
+    if (solution.closest(".calculator__results").classList.contains("active")) {
+      checkValue(this);
+    }
+  });
+
+  function checkValue(item) {
+    if (item.value === "EUR") {
+      euCalc(mileage.value, consumption.value, cost.value, 10, 15, 2);
+    } else if (item.value === "GB") {
+      gbCalc(mileage.value, consumption.value, cost.value, 10, 15, 20.04);
+    } else {
+      usCalc(mileage.value, consumption.value, cost.value, 10, 15, 16.69);
+    }
+  }
+
+  function euCalc(
+    mileage,
+    consumption,
+    cost,
+    efficiency,
+    co2Efficiency,
+    co2DieselEfficiency
+  ) {
+    const result = (mileage / 100) * consumption * cost;
+    const economy = (result * efficiency) / 100;
+    const co2 = (co2DieselEfficiency * consumption * mileage) / 100;
+    const co2Economy = (co2 * co2Efficiency) / 100;
+    const tempStorage = [result, economy, co2, co2Economy];
+
+    solutionCost.innerHTML = `${Math.round(result)}`;
+    solutionEmission.innerHTML = `${Math.round(co2)}`;
+    savingsCost.innerHTML = `${Math.round(economy)}`;
+    savingsEmission.innerHTML = `${Math.round(co2Economy)}`;
+  }
+
+  function gbCalc(
+    mileage,
+    consumption,
+    cost,
+    efficiency,
+    co2Efficiency,
+    co2DieselEfficiency
+  ) {
+    const result = (mileage / consumption) * cost;
+    const economy = (result * efficiency) / 100;
+    const co2 = co2DieselEfficiency * (mileage / consumption);
+    const co2Economy = (co2 * co2Efficiency) / 100;
+
+    solutionCost.innerHTML = `${Math.round(result)}`;
+    solutionEmission.innerHTML = `${Math.round(co2)}`;
+    savingsCost.innerHTML = `${Math.round(economy)}`;
+    savingsEmission.innerHTML = `${Math.round(co2Economy)}`;
+  }
+
+  function usCalc(
+    mileage,
+    consumption,
+    cost,
+    efficiency,
+    co2Efficiency,
+    co2DieselEfficiency
+  ) {
+    const result = (mileage / consumption) * cost;
+    const economy = (result * efficiency) / 100;
+    const co2 = co2DieselEfficiency * (mileage / consumption);
+    const co2Economy = (co2 * co2Efficiency) / 100;
+    const tempStorage = [
+      Math.floor(economy),
+      Math.floor(result),
+      Math.floor(co2),
+      Math.floor(co2Economy),
+    ];
+
+    solutionCost.innerHTML = `${Math.round(result)}`;
+    solutionEmission.innerHTML = `${Math.round(co2)}`;
+    savingsCost.innerHTML = `${Math.round(economy)}`;
+    savingsEmission.innerHTML = `${Math.round(co2Economy)}`;
+  }
 });

@@ -98,7 +98,87 @@
               <img src="img/device.png" alt="Device">
             </div>
           </div>
-          <div class="calculator device__calculator"></div>
+          <div class="calculator device__calculator">
+            <h2 class="title calculator__title">
+              Find out your current annual expenses
+            </h2>
+            <form class="calculator__form">
+              <div class="calculator__inputs">
+                <label class="calculator__label">
+                  <span class="color-span calculator__span">Select a territory</span>
+                  <select class="calculator__region accented">
+                    <option value="EUR">Europe
+                    </option>
+                    <option value="US">Us
+                    </option>
+                    <option value="GB">GB
+                    </option>
+                  </select>
+                </label>
+                <label class="calculator__label">
+                  <span class="calculator__span">Currency</span>
+                  <select class="calculator__currency">
+                    <option value="EUR">EUR</option>
+                    <option value="US">US</option>
+                    <option value="GB">GB</option>
+                  </select>
+                </label>
+                <label class="calculator__label">
+                  <span class="calculator__span">Vehicle mileage (km)</span>
+                  <input type="number" step="any" class="calculator__input input-reset calculator__mileage"
+                    placeholder="insert value">
+                </label>
+                <label class="calculator__label">
+                  <span class="calculator__span">Fuel consumption</span>
+                  <input type="number" step="any" class="calculator__input input-reset calculator__consumption"
+                    placeholder="insert value">
+                </label>
+                <label class="calculator__label">
+                  <span class="calculator__span">Fuel cost EUR</span>
+                  <input type="number" step="any" class="calculator__input input-reset calculator__cost"
+                    placeholder="insert value">
+                </label>
+              </div>
+              <button class="calculator__btn bordered-link" type="submit">
+                Find out
+              </button>
+            </form>
+            <div class="calculator__results">
+              <div class="calculator__results-wrapper">
+                <div class="calculator__solution calculator__results-item">
+                  <div class="calculator__results-head">
+                    <h3><span class="color-span">There is a solution</span> for better annual results*
+                    </h3>
+                  </div>
+                  <div class="calculator__results-inner">
+                    <div class="cost">
+                      <p class="calculator__cost-head">cost spent on fuel EUR/1year</p>
+                      <p class="calculator__cost-main calculator__solution-cost">56 400</p>
+                    </div>
+                    <div class="emission">
+                      <p class="calculator__emission-head">СО2 emmision (kg)</p>
+                      <p class="calculator__emission-main calculator__solution-emission">60 000</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="calculator__savings calculator__results-item">
+                  <div class="calculator__results-head">
+                    <h3>potential savings with FuelWell</h3>
+                  </div>
+                  <div class="calculator__results-inner">
+                    <div class="cost">
+                      <p class="calculator__cost-head">Fuel cost</p>
+                      <p class="calculator__cost-main calculator__savings-cost">5 640</p>
+                    </div>
+                    <div class="emission">
+                      <p class="calculator__emission-head">СО2 emmision (kg)</p>
+                      <p class="calculator__emission-main calculator__savings-emission">9 000</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </section>

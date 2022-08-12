@@ -29,6 +29,16 @@
 
  &__ticker {
   @include adaptiv-value(margin-bottom, 160, 50, 1);
+
+  &-inner {
+   display: grid;
+   grid-auto-flow: column;
+   gap: 20px;
+  }
+
+  & .ticker__item {
+   animation: ticker 25s linear infinite;
+  }
  }
 
  &__inner {

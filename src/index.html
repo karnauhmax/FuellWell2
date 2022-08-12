@@ -117,23 +117,23 @@
                 </label>
                 <label class="calculator__label">
                   <span class="calculator__span">Currency</span>
-                  <select class="calculator__currency">
+                  <select class="calculator__currency" disabled>
                     <option value="EUR">EUR</option>
                     <option value="US">US</option>
                     <option value="GB">GB</option>
                   </select>
                 </label>
-                <label class="calculator__label">
+                <label class="calculator__label calculator__mileage-label">
                   <span class="calculator__span">Vehicle mileage (km)</span>
                   <input type="number" step="any" class="calculator__input input-reset calculator__mileage"
                     placeholder="insert value">
                 </label>
-                <label class="calculator__label">
+                <label class="calculator__label calculator__consumption-label">
                   <span class="calculator__span">Fuel consumption</span>
                   <input type="number" step="any" class="calculator__input input-reset calculator__consumption"
                     placeholder="insert value">
                 </label>
-                <label class="calculator__label">
+                <label class="calculator__label calculator__cost-label">
                   <span class="calculator__span">Fuel cost EUR</span>
                   <input type="number" step="any" class="calculator__input input-reset calculator__cost"
                     placeholder="insert value">
@@ -156,7 +156,7 @@
                       <p class="calculator__cost-main calculator__solution-cost">56 400</p>
                     </div>
                     <div class="emission">
-                      <p class="calculator__emission-head">СО2 emmision (kg)</p>
+                      <p class="calculator__emission-head calculator__solution-head">СО2 emmision (kg)</p>
                       <p class="calculator__emission-main calculator__solution-emission">60 000</p>
                     </div>
                   </div>
@@ -194,52 +194,54 @@
       </div>
       <section class="benefits">
         <div class="ticker benefits__ticker">
-          <div class="ticker__item">
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
+          <div class="ticker__inner benefits__ticker-inner">
+            <div class="ticker__item">
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+            </div>
           </div>
         </div>
         <div class="container">
@@ -480,52 +482,17 @@
       </section>
       <section class="reports">
         <div class="ticker reports__ticker">
-          <div class="ticker__item">
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
-            <p>FUEL</p>
-            <p>well</p>
-            <p>eco </p>
+          <div class="ticker__inner reports__ticker-inner">
+            <div class="ticker__item">
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+            </div>
+            <div class="ticker__item">
+              <p>FUEL</p>
+              <p>well</p>
+              <p>eco </p>
+            </div>
           </div>
         </div>
         <div class="container">

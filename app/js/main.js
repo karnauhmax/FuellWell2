@@ -13159,67 +13159,125 @@ window.addEventListener("DOMContentLoaded", function () {
   var cost = form.querySelector(".calculator__cost");
   var solution = document.querySelector(".calculator__solution");
   var solutionCost = solution.querySelector(".calculator__solution-cost");
+  var solutionHead = solution.querySelector(".calculator__solution .calculator__cost-head");
+  var solutionMain = solution.querySelector(".calculator__solution .calculator__cost-main");
   var solutionEmission = solution.querySelector(".calculator__solution-emission");
+  var solutionEmissionHead = solution.querySelector(".calculator__solution-head");
   var savings = document.querySelector(".calculator__savings");
   var savingsCost = savings.querySelector(".calculator__savings-cost");
   var savingsEmission = savings.querySelector(".calculator__savings-emission");
+  var savingsEmissionHead = savings.querySelector(".calculator__emission-head");
   var regionSelect = form.querySelector(".calculator__region");
   var submitBtn = form.querySelector(".calculator__btn");
+  var mileageLabel = document.querySelector(".calculator__mileage-label span");
+  var costLabel = document.querySelector(".calculator__cost-label span");
+  var consumptionLabel = document.querySelector(".calculator__consumption-label span");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    checkValue(regionSelect);
-    solution.closest(".calculator__results").classList.add("active");
-    submitBtn.style.display = "none";
+
+    if (mileage.value && cost.value && consumption.value) {
+      calculateResult(regionSelect);
+      solution.closest(".calculator__results").classList.add("active");
+      submitBtn.classList.add("hide");
+    }
   });
   regionSelect.addEventListener("change", function () {
+    changemetrics();
+
     if (solution.closest(".calculator__results").classList.contains("active")) {
-      checkValue(this);
+      calculateResult(this);
     }
-  });
+  }); // switch case
 
-  function checkValue(item) {
-    if (item.value === "EUR") {
-      euCalc(mileage.value, consumption.value, cost.value, 10, 15, 2);
-    } else if (item.value === "GB") {
-      gbCalc(mileage.value, consumption.value, cost.value, 10, 15, 20.04);
-    } else {
-      usCalc(mileage.value, consumption.value, cost.value, 10, 15, 16.69);
+  function calculateResult(regionSelect) {
+    var parameters = {
+      efficiency: 10,
+      co2Efficiency: 15,
+      dieselEfficiencies: {
+        euro: 2,
+        gbr: 20.04,
+        usa: 16.69
+      }
+    }; // countries specific calcs
+
+    var result;
+    var co2;
+    var economy;
+    var co2Economy;
+
+    switch (regionSelect.value) {
+      case "EUR":
+        result = mileage.value / 100 * consumption.value * cost.value;
+        co2 = parameters.dieselEfficiencies.euro * consumption.value * mileage.value / 100;
+        break;
+
+      case "GB":
+        result = mileage.value / consumption.value * cost.value;
+        co2 = parameters.dieselEfficiencies.gbr * (mileage.value / consumption.value);
+        break;
+
+      case "US":
+        result = mileage.value / consumption.value * cost.value;
+        co2 = parameters.dieselEfficiencies.usa * (mileage.value / consumption.value);
+        break;
     }
-  }
 
-  function euCalc(mileage, consumption, cost, efficiency, co2Efficiency, co2DieselEfficiency) {
-    var result = mileage / 100 * consumption * cost;
-    var economy = result * efficiency / 100;
-    var co2 = co2DieselEfficiency * consumption * mileage / 100;
-    var co2Economy = co2 * co2Efficiency / 100;
-    var tempStorage = [result, economy, co2, co2Economy];
+    changemetrics();
+    economy = result * parameters.efficiency / 100;
+    co2Economy = co2 * parameters.co2Efficiency / 100;
     solutionCost.innerHTML = "".concat(Math.round(result));
     solutionEmission.innerHTML = "".concat(Math.round(co2));
     savingsCost.innerHTML = "".concat(Math.round(economy));
     savingsEmission.innerHTML = "".concat(Math.round(co2Economy));
+  } // change metrics
+
+
+  function changemetrics() {
+    switch (regionSelect.value) {
+      case "EUR":
+        costLabel.innerHTML = "Fuel cost in EUR";
+        mileageLabel.innerHTML = "Vehicle mileage (km)";
+        solutionHead.innerHTML = "cost spent on fuel EUR/1year";
+        solutionEmissionHead.innerHTML = "CO2 emission (kg)";
+        savingsEmissionHead.innerHTML = "CO2 emission (kg)";
+        break;
+
+      case "GB":
+        costLabel.innerHTML = "Fuel cost in GBP";
+        mileageLabel.innerHTML = "Vehicle mileage (GB miles)";
+        solutionHead.innerHTML = "cost spent on fuel GBP/1year";
+        solutionEmissionHead.innerHTML = "CO2 emission (lb)";
+        savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        break;
+
+      case "US":
+        costLabel.innerHTML = "Fuel cost in USD";
+        mileageLabel.innerHTML = "Vehicle mileage (US miles)";
+        solutionHead.innerHTML = "cost spent on fuel USD/1year";
+        solutionEmissionHead.innerHTML = "CO2 emission (lb)";
+        savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        break;
+    }
+  } // ticker
+
+
+  var reportsTicker = document.querySelector(".reports__ticker-inner");
+  var benefitsTicker = document.querySelector(".benefits__ticker-inner");
+
+  for (var i = 0; i < 20; i++) {
+    var tickerItem = document.createElement("div");
+    tickerItem.classList.add("ticker__item");
+    tickerItem.innerHTML = "\n        <p>FUEL</p>\n        <p>well</p>\n        <p>eco </p>\n    ";
+    reportsTicker.append(tickerItem);
   }
 
-  function gbCalc(mileage, consumption, cost, efficiency, co2Efficiency, co2DieselEfficiency) {
-    var result = mileage / consumption * cost;
-    var economy = result * efficiency / 100;
-    var co2 = co2DieselEfficiency * (mileage / consumption);
-    var co2Economy = co2 * co2Efficiency / 100;
-    solutionCost.innerHTML = "".concat(Math.round(result));
-    solutionEmission.innerHTML = "".concat(Math.round(co2));
-    savingsCost.innerHTML = "".concat(Math.round(economy));
-    savingsEmission.innerHTML = "".concat(Math.round(co2Economy));
-  }
+  for (var _i = 0; _i < 20; _i++) {
+    var _tickerItem = document.createElement("div");
 
-  function usCalc(mileage, consumption, cost, efficiency, co2Efficiency, co2DieselEfficiency) {
-    var result = mileage / consumption * cost;
-    var economy = result * efficiency / 100;
-    var co2 = co2DieselEfficiency * (mileage / consumption);
-    var co2Economy = co2 * co2Efficiency / 100;
-    var tempStorage = [Math.floor(economy), Math.floor(result), Math.floor(co2), Math.floor(co2Economy)];
-    solutionCost.innerHTML = "".concat(Math.round(result));
-    solutionEmission.innerHTML = "".concat(Math.round(co2));
-    savingsCost.innerHTML = "".concat(Math.round(economy));
-    savingsEmission.innerHTML = "".concat(Math.round(co2Economy));
+    _tickerItem.classList.add("ticker__item");
+
+    _tickerItem.innerHTML = "\n        <p>FUEL</p>\n        <p>well</p>\n        <p>eco </p>\n    ";
+    benefitsTicker.append(_tickerItem);
   }
 });
 })();

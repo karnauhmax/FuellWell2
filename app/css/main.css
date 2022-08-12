@@ -618,6 +618,10 @@ a {
   }
 }
 
+.hide {
+  display: none;
+}
+
 .color-span {
   color: var(--primary-color);
 }
@@ -2242,6 +2246,11 @@ a {
   text-transform: uppercase;
   gap: 60px;
 }
+.ticker__inner {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+}
 
 @-webkit-keyframes ticker {
   from {
@@ -2673,6 +2682,16 @@ a {
   .reports__ticker {
     margin-bottom: calc(50px + 110 * ((100vw - 320px) / 1160));
   }
+}
+.reports__ticker-inner {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 20px;
+}
+.reports__ticker .ticker__item {
+  -webkit-animation: ticker 25s linear infinite;
+  animation: ticker 25s linear infinite;
 }
 .reports__inner {
   counter-reset: counter;

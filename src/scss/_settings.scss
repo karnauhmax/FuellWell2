@@ -189,6 +189,10 @@ a {
   @include adaptiv-value(font-size, 45, 30, 1);
 }
 
+.hide {
+  display: none;
+}
+
 .color-span {
   color: var(--primary-color);
 }

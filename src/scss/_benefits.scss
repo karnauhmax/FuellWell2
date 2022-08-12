@@ -270,6 +270,11 @@
   text-transform: uppercase;
   gap: 60px;
  }
+
+ &__inner {
+  display: grid;
+  grid-auto-flow: column;
+ }
 }
 
 @keyframes ticker {

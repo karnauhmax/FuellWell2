@@ -12986,10 +12986,6 @@ window.addEventListener("DOMContentLoaded", function () {
 
   var master = gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.timeline();
   gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.registerPlugin(gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_5__.ScrollTrigger);
-  gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.from(".site-container", {
-    opacity: 0,
-    duration: 1
-  });
 
   function device() {
     var tl = gsap__WEBPACK_IMPORTED_MODULE_4__.gsap.timeline({

@@ -85,7 +85,6 @@ window.addEventListener("DOMContentLoaded", () => {
   // animations
   const master = gsap.timeline();
   gsap.registerPlugin(ScrollTrigger);
-  gsap.from(".site-container", { opacity: 0, duration: 1 });
 
   function device() {
     const tl = gsap.timeline({

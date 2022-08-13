@@ -107,9 +107,9 @@
                 <label class="calculator__label">
                   <span class="color-span calculator__span">Select a territory</span>
                   <select class="calculator__region accented">
-                    <option value="EUR">Europe
+                    <option value="EUR">EUROPE
                     </option>
-                    <option value="US">Us
+                    <option value="US">US
                     </option>
                     <option value="GB">GB
                     </option>
@@ -117,11 +117,7 @@
                 </label>
                 <label class="calculator__label">
                   <span class="calculator__span">Currency</span>
-                  <select class="calculator__currency" disabled>
-                    <option value="EUR">EUR</option>
-                    <option value="US">US</option>
-                    <option value="GB">GB</option>
-                  </select>
+                  <input class="calculator__currency" disabled placeholder="EUR">
                 </label>
                 <label class="calculator__label calculator__mileage-label">
                   <span class="calculator__span">Vehicle mileage (km)</span>
@@ -139,7 +135,7 @@
                     placeholder="insert value">
                 </label>
               </div>
-              <button class="calculator__btn bordered-link" type="submit">
+              <button class=" calculator__btn bordered-link" type="submit" data-da=".calculator__inputs, 992, last">
                 Find out
               </button>
             </form>
@@ -150,14 +146,16 @@
                     <h3><span class="color-span">There is a solution</span> for better annual results*
                     </h3>
                   </div>
-                  <div class="calculator__results-inner">
-                    <div class="cost">
-                      <p class="calculator__cost-head">cost spent on fuel EUR/1year</p>
-                      <p class="calculator__cost-main calculator__solution-cost">56 400</p>
-                    </div>
-                    <div class="emission">
-                      <p class="calculator__emission-head calculator__solution-head">СО2 emmision (kg)</p>
-                      <p class="calculator__emission-main calculator__solution-emission">60 000</p>
+                  <div class="calculator__results-body">
+                    <div class="calculator__results-inner">
+                      <div class="cost">
+                        <p class="calculator__cost-head">cost spent on fuel EUR/1year</p>
+                        <p class="calculator__cost-main calculator__solution-cost">56 400</p>
+                      </div>
+                      <div class="emission">
+                        <p class="calculator__emission-head calculator__solution-head">СО2 emmision (kg)</p>
+                        <p class="calculator__emission-main calculator__solution-emission">60 000</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -165,14 +163,16 @@
                   <div class="calculator__results-head">
                     <h3>potential savings with FuelWell</h3>
                   </div>
-                  <div class="calculator__results-inner">
-                    <div class="cost">
-                      <p class="calculator__cost-head">Fuel cost</p>
-                      <p class="calculator__cost-main calculator__savings-cost">5 640</p>
-                    </div>
-                    <div class="emission">
-                      <p class="calculator__emission-head">СО2 emmision (kg)</p>
-                      <p class="calculator__emission-main calculator__savings-emission">9 000</p>
+                  <div class="calculator__results-body">
+                    <div class="calculator__results-inner">
+                      <div class="cost">
+                        <p class="calculator__cost-head">Fuel cost</p>
+                        <p class="calculator__cost-main calculator__savings-cost">5 640</p>
+                      </div>
+                      <div class="emission">
+                        <p class="calculator__emission-head">СО2 emmision (kg)</p>
+                        <p class="calculator__emission-main calculator__savings-emission">9 000</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -446,7 +446,7 @@
 
           </div>
           <div class="efficiency__media">
-            <div class="efficiency__video">
+            <div class="efficiency__video ford-video">
               <div class="efficiency__video-item">
                 <video muted class="efficiency__video-instance efficiency__video-ford">
                   <source src="video/efficiency-video.mp4" type="video/mp4">
@@ -462,8 +462,8 @@
               </div>
             </div>
             <div class="efficiency__video">
-              <div class="efficiency__video-item">
-                <video class="efficiency__video-instance efficiency__video-scania">
+              <div class="efficiency__video-item scania-video">
+                <video muted class="efficiency__video-instance efficiency__video-scania">
                   <source src="video/efficiency-video.mp4" type="video/mp4">
                   <source src="video/efficiency-video.webm" type="video/webm">
                 </video>

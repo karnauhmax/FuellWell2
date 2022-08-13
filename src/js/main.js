@@ -18,6 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     render() {
       this.btn.addEventListener("click", (e) => {
+        console.log(this.video);
         if (this.video.paused == true) {
           this.video.play();
           this.video.setAttribute("controls", true);
@@ -32,6 +33,7 @@ window.addEventListener("DOMContentLoaded", () => {
       });
     }
   }
+  new Video(".scania-video", ".efficiency__video-scania").render();
   new Video(".efficiency__video-item", ".efficiency__video-ford").render();
   new Video(".media__video", ".media__video-item").render();
 
@@ -255,6 +257,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const consumptionLabel = document.querySelector(
     ".calculator__consumption-label span"
   );
+  const currency = document.querySelector(".calculator__currency");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -272,8 +275,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // switch case
-
+  // countries specific calcs
   function calculateResult(regionSelect) {
     const parameters = {
       efficiency: 10,
@@ -284,8 +286,6 @@ window.addEventListener("DOMContentLoaded", () => {
         usa: 16.69,
       },
     };
-
-    // countries specific calcs
 
     let result;
     let co2;
@@ -339,6 +339,7 @@ window.addEventListener("DOMContentLoaded", () => {
         solutionHead.innerHTML = "cost spent on fuel EUR/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (kg)";
         savingsEmissionHead.innerHTML = "CO2 emission (kg)";
+        currency.value = "EUR";
         break;
       case "GB":
         costLabel.innerHTML = "Fuel cost in GBP";
@@ -346,6 +347,7 @@ window.addEventListener("DOMContentLoaded", () => {
         solutionHead.innerHTML = "cost spent on fuel GBP/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        currency.value = "GBP";
 
         break;
       case "US":
@@ -354,6 +356,7 @@ window.addEventListener("DOMContentLoaded", () => {
         solutionHead.innerHTML = "cost spent on fuel USD/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        currency.value = "USD";
         break;
     }
   }

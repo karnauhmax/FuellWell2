@@ -12921,6 +12921,8 @@ window.addEventListener("DOMContentLoaded", function () {
         var _this = this;
 
         this.btn.addEventListener("click", function (e) {
+          console.log(_this.video);
+
           if (_this.video.paused == true) {
             _this.video.play();
 
@@ -12943,6 +12945,7 @@ window.addEventListener("DOMContentLoaded", function () {
     return Video;
   }();
 
+  new Video(".scania-video", ".efficiency__video-scania").render();
   new Video(".efficiency__video-item", ".efficiency__video-ford").render();
   new Video(".media__video", ".media__video-item").render(); // sliders
 
@@ -13172,6 +13175,7 @@ window.addEventListener("DOMContentLoaded", function () {
   var mileageLabel = document.querySelector(".calculator__mileage-label span");
   var costLabel = document.querySelector(".calculator__cost-label span");
   var consumptionLabel = document.querySelector(".calculator__consumption-label span");
+  var currency = document.querySelector(".calculator__currency");
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -13187,7 +13191,7 @@ window.addEventListener("DOMContentLoaded", function () {
     if (solution.closest(".calculator__results").classList.contains("active")) {
       calculateResult(this);
     }
-  }); // switch case
+  }); // countries specific calcs
 
   function calculateResult(regionSelect) {
     var parameters = {
@@ -13198,8 +13202,7 @@ window.addEventListener("DOMContentLoaded", function () {
         gbr: 20.04,
         usa: 16.69
       }
-    }; // countries specific calcs
-
+    };
     var result;
     var co2;
     var economy;
@@ -13240,6 +13243,7 @@ window.addEventListener("DOMContentLoaded", function () {
         solutionHead.innerHTML = "cost spent on fuel EUR/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (kg)";
         savingsEmissionHead.innerHTML = "CO2 emission (kg)";
+        currency.value = "EUR";
         break;
 
       case "GB":
@@ -13248,6 +13252,7 @@ window.addEventListener("DOMContentLoaded", function () {
         solutionHead.innerHTML = "cost spent on fuel GBP/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        currency.value = "GBP";
         break;
 
       case "US":
@@ -13256,6 +13261,7 @@ window.addEventListener("DOMContentLoaded", function () {
         solutionHead.innerHTML = "cost spent on fuel USD/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        currency.value = "USD";
         break;
     }
   } // ticker

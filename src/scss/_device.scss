@@ -140,39 +140,92 @@
 
   &-element {
    border-radius: 50%;
-   background-color: black;
    display: flex;
    justify-content: center;
    align-items: center;
-   min-width: 90px;
-   min-height: 90px;
+   min-width: 114px;
+   min-height: 114px;
    font-size: 16px;
    text-align: center;
    overflow: hidden;
    margin-right: 20px;
    position: relative;
+   z-index: 5;
+
+   &::before {
+    content: "";
+    min-width: 90px;
+    min-height: 90px;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+   }
+
+   &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 114px;
+    height: 144px;
+    background-repeat: no-repeat;
+    background-size: contain;
+   }
+
 
    & p {
     font-weight: 700;
     max-width: 60px;
     word-break: break-word;
+    position: relative;
+    z-index: 2;
    }
   }
 
   &-pm {
-   background-color: var(--primary-color);
+   &::before {
+    background-color: var(--primary-color);
+   }
+
+   &::after {
+    background-image: url("../img/Ellipse52.svg");
+   }
   }
 
   &-co {
-   background-color: var(--bg-primaryblue);
+   &::before {
+    background-color: var(--bg-primaryblue);
+   }
+
+   &::after {
+    background-image: url("../img/device-ellipse4.svg");
+   }
+
   }
 
   &-co2 {
-   background-color: var(--bg-lightblue);
+   &::before {
+    background-color: var(--bg-lightblue);
+   }
+
+   &::after {
+    width: 95px;
+
+    background-image: url("../img/device-ellipse3.svg");
+   }
   }
 
   &-no {
-   background-color: var(--bg-greyblue);
+   &::before {
+    background-color: var(--bg-greyblue);
+   }
+
+   &::after {
+    background-image: url("../img/device-ellipse2.svg");
+   }
   }
 
  }

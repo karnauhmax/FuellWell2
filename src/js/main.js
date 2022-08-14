@@ -259,7 +259,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (mileage.value && cost.value && consumption.value) {
+    if (
+      mileage.value &&
+      cost.value &&
+      consumption.value &&
+      mileage.value > 0 &&
+      cost.value > 0 &&
+      consumption.value > 0
+    ) {
       calculateResult(regionSelect);
       solution.closest(".calculator__results").classList.add("active");
       submitBtn.classList.add("hide");
@@ -268,7 +275,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
   regionSelect.addEventListener("change", function () {
     changemetrics();
-    if (solution.closest(".calculator__results").classList.contains("active")) {
+    if (
+      solution.closest(".calculator__results").classList.contains("active") &&
+      mileage.value &&
+      cost.value &&
+      consumption.value &&
+      mileage.value > 0 &&
+      cost.value > 0 &&
+      consumption.value > 0
+    ) {
       calculateResult(this);
     }
   });

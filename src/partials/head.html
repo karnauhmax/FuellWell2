@@ -12,7 +12,161 @@
   <link rel="preload" href="fonts/Rubik-Light.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/main.css">
   <style>
+    .header,
+    .header::after {
+      width: 100%;
+      position: absolute
+    }
 
+    .header::after,
+    .menu__link::after {
+      bottom: 0;
+      left: 0
+    }
+
+    .header {
+      padding: 20px 0 24px;
+      left: 0;
+      top: 0;
+      z-index: 6;
+      background-color: transparent
+    }
+
+    .header__inner {
+      display:
+        -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content:
+        space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    .header__logo {
+      -webkit-box-flex:
+        0;
+      -ms-flex: 0 0 74px;
+      flex: 0 0 74px;
+      margin-right: 30px;
+      height: 43px;
+      padding-top: 5px;
+      z-index: 7
+    }
+
+    .header::after {
+      content: "";
+      height: 1px;
+      background-color: #575555;
+      z-index: 8
+    }
+
+    .menu.menu--active {
+      visibility: visible;
+      opacity: 1
+    }
+
+    .menu__list {
+      display: -ms-grid;
+      display: grid;
+      -ms-grid-columns: (auto)[6];
+      grid-template-columns: repeat(6,
+          auto);
+      -webkit-column-gap: 35px;
+      -moz-column-gap: 35px;
+      column-gap: 35px;
+      row-gap: 10px;
+      max-width: 700px
+    }
+
+    .menu__link {
+      font-size: 16px;
+      color: var(--light-color);
+      position: relative;
+      -webkit-transition: .5s;
+      -o-transition: .5s;
+      transition:
+        .5s
+    }
+
+    .menu__link::after,
+    .menu__link::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      background-color:
+        var(--primary-color);
+      -webkit-transition: .5s;
+      -o-transition: .5s;
+      transition: .5s
+    }
+
+    .menu__link::before {
+      top: 0;
+      right: 0
+    }
+
+    .menu__link:hover::after,
+    .menu__link:hover::before {
+      width: 100%
+    }
+
+    @media screen and (max-width:768px) {
+      .header__logo {
+        padding-top: 0
+      }
+
+      .menu,
+      .menu::before {
+        width: 100%;
+        position: fixed
+      }
+
+      .menu {
+        padding: 200px 0 30px;
+        background-color:
+          var(--bg-dark);
+        height: 100%;
+        left: 0;
+        bottom: 0;
+        z-index: 4;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition:
+          .5s;
+        -o-transition: .5s;
+        transition: .5s;
+        overflow-y: auto
+      }
+
+      .menu::before {
+        content: "";
+        top: 0;
+        height: 85px;
+        display:
+          block;
+        z-index: 20
+      }
+
+      .menu__list {
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        -webkit-box-align:
+          center;
+        -ms-flex-align: center;
+        align-items: center;
+        justify-items: center;
+        row-gap: 36px
+      }
+
+      .menu__link {
+        font-size: 24px
+      }
+    }
   </style>
   <script defer src="js/main.js"></script>
 </head>

@@ -1,4 +1,3 @@
-import Tab from "./functions/tabs";
 import Splide from "@splidejs/splide";
 import DynamicAdapt from "./functions/dynamicAdapt";
 import { burger } from "./functions/burger";

@@ -3,6 +3,7 @@ import DynamicAdapt from "./functions/dynamicAdapt";
 import { burger } from "./functions/burger";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { validateForms } from "./functions/validate-forms";
 
 window.addEventListener("DOMContentLoaded", () => {
   //videos
@@ -347,28 +348,31 @@ window.addEventListener("DOMContentLoaded", () => {
   function changemetrics() {
     switch (regionSelect.value) {
       case "EUR":
-        costLabel.innerHTML = "Fuel cost in EUR";
+        costLabel.innerHTML = "Fuel cost in EUR (per liter)";
         mileageLabel.innerHTML = "Vehicle mileage (km)";
         solutionHead.innerHTML = "cost spent on fuel EUR/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (kg)";
         savingsEmissionHead.innerHTML = "CO2 emission (kg)";
         currency.value = "EUR";
+        consumptionLabel.innerHTML = "Fuel consumption L/100km";
         break;
       case "GB":
-        costLabel.innerHTML = "Fuel cost in GBP";
+        costLabel.innerHTML = "Fuel cost in GBP per gallon (GB)";
         mileageLabel.innerHTML = "Vehicle mileage (GB miles)";
         solutionHead.innerHTML = "cost spent on fuel GBP/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        consumptionLabel.innerHTML = "Fuel consumption MPG(GB)";
         currency.value = "GBP";
 
         break;
       case "US":
-        costLabel.innerHTML = "Fuel cost in USD";
+        costLabel.innerHTML = "Fuel cost in USD per gallon (US)";
         mileageLabel.innerHTML = "Vehicle mileage (US miles)";
         solutionHead.innerHTML = "cost spent on fuel USD/1year";
         solutionEmissionHead.innerHTML = "CO2 emission (lb)";
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
+        consumptionLabel.innerHTML = "Fuel consumption MPG(US)";
         currency.value = "USD";
         break;
     }
@@ -400,4 +404,76 @@ window.addEventListener("DOMContentLoaded", () => {
     `;
     benefitsTicker.append(tickerItem);
   }
+
+  // forms
+
+  const mediaForm = document.querySelector(".media__form");
+
+  const rules1 = [
+    {
+      ruleSelector: ".media__mail",
+      rules: [
+        {
+          rule: "required",
+          errorMessage: "Email is required",
+        },
+        {
+          rule: "email",
+          errorMessage: "Email is invalid",
+        },
+      ],
+    },
+    {
+      ruleSelector: ".media__phone",
+      rules: [
+        {
+          rule: "minLength",
+          value: 8,
+          errorMessage: "Phone is invalid",
+          colorWrong: "blue",
+        },
+        {
+          rule: "required",
+          errorMessage: "Заполните имя!",
+          errorMessage: "Phone is required",
+        },
+      ],
+    },
+
+    {
+      ruleSelector: ".media__name",
+      rules: [
+        {
+          rule: "minLength",
+          value: 3,
+          errorMessage: "Name is invalid",
+        },
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+        },
+      ],
+    },
+
+    {
+      ruleSelector: ".media__company",
+      rules: [
+        {
+          rule: "minLength",
+          value: 3,
+          errorMessage: "Company is invalid",
+        },
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+        },
+      ],
+    },
+  ];
+
+  const afterForm = () => {
+    console.log("Произошла отправка, тут можно писать любые действия");
+  };
+
+  validateForms(".media__form", rules1, afterForm);
 });

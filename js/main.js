@@ -4093,6 +4093,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var just_validate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! just-validate */ "./node_modules/just-validate/dist/just-validate.es.js");
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! inputmask */ "./node_modules/inputmask/dist/inputmask.js");
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_1__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
 function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -4105,6 +4113,7 @@ var validateForms = function validateForms(selector, rules, afterSend) {
   var _document;
 
   var form = (_document = document) === null || _document === void 0 ? void 0 : _document.querySelector(selector);
+  console.log(form);
   var telSelector = form === null || form === void 0 ? void 0 : form.querySelector('input[type="tel"]');
 
   if (!form) {
@@ -4115,23 +4124,7 @@ var validateForms = function validateForms(selector, rules, afterSend) {
   if (!rules) {
     console.error("Вы не передали правила валидации!");
     return false;
-  } // if (telSelector) {
-  //   const inputMask = new Inputmask('+7 (999) 999-99-99');
-  //   inputMask.mask(telSelector);
-  //   for (let item of rules) {
-  //     if (item.tel) {
-  //       item.rules.push({
-  //         rule: 'function',
-  //         validator: function() {
-  //           const phone = telSelector.inputmask.unmaskedvalue();
-  //           return phone.length === 10;
-  //         },
-  //         errorMessage: item.telError
-  //       });
-  //     }
-  //   }
-  // }
-
+  }
 
   var validation = new just_validate__WEBPACK_IMPORTED_MODULE_0__["default"](selector);
 
@@ -4150,8 +4143,14 @@ var validateForms = function validateForms(selector, rules, afterSend) {
   }
 
   validation.onSuccess(function (ev) {
+    var _console;
+
+    console.log("Complete!");
+    console.log(ev);
     var formData = new FormData(ev.target);
     var xhr = new XMLHttpRequest();
+
+    (_console = console).log.apply(_console, _toConsumableArray(formData));
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
@@ -4165,7 +4164,7 @@ var validateForms = function validateForms(selector, rules, afterSend) {
       }
     };
 
-    xhr.open("POST", "mail.php", true);
+    xhr.open("POST", "../mail.php", true);
     xhr.send(formData);
     ev.target.reset();
   });

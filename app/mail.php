@@ -34,7 +34,7 @@ try {
   // Настройки вашей почты
   $mail->Host       = 'smtp.gmail.com'; // SMTP сервера вашей почты
   $mail->Username   = 'phptestvalidatemxk@gmail.com'; // Логин на почте
-  $mail->Password   = 'ruhqyjvqjcvazszn'; // Пароль на почте
+  $mail->Password   = 'hyxonobbmigblwqv'; // Пароль на почте
   $mail->SMTPSecure = 'ssl';
   $mail->Port       = 587;
 

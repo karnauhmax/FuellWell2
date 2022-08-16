@@ -369,22 +369,23 @@
                 <h2 class="title  callback__title media__callback-title">
                   get a free quote for your fleet
                 </h2>
-                <form action="mail.php" method="POST" class="form media__form">
+                <form name="test" method="POST" action="main.php" class="form media__form">
                   <div class="form__inputs media__form-inputs">
                     <label class="validate-label">
-                      <input type="text" class="form__input input-reset media__name" placeholder="Name">
+                      <input type="text" class="form__input input-reset media__name" name="Name" placeholder="Name">
                     </label>
                     <label class="validate-label">
-                      <input type="tel" class="form__input input-reset media__phone" placeholder="Phone">
+                      <input type="tel" class="form__input input-reset media__phone" name="Phone" placeholder="Phone">
                     </label>
                     <label class="validate-label">
-                      <input type="email" class="form__inpit input-reset media__mail" placeholder="E-mail">
+                      <input type="email" class="form__inpit input-reset media__mail" name="Email" placeholder="E-mail">
                     </label>
                     <label class="validate-label">
-                      <input type="text" class="form__input input-reset media__company" placeholder="Company">
+                      <input type="text" class="form__input input-reset media__company" name="Company" id="company"
+                        placeholder="Company">
                     </label>
                   </div>
-                  <button class="btn btn-primary form__btn media__form-btn">Get quote</button>
+                  <button class="btn btn-primary form__btn media__form-btn" type="submit">Get quote</button>
                 </form>
               </div>
             </div>

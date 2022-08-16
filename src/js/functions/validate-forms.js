@@ -3,6 +3,7 @@ import Inputmask from "inputmask";
 
 export const validateForms = (selector, rules, afterSend) => {
   const form = document?.querySelector(selector);
+  console.log(form);
   const telSelector = form?.querySelector('input[type="tel"]');
 
   if (!form) {
@@ -15,24 +16,6 @@ export const validateForms = (selector, rules, afterSend) => {
     return false;
   }
 
-  // if (telSelector) {
-  //   const inputMask = new Inputmask('+7 (999) 999-99-99');
-  //   inputMask.mask(telSelector);
-
-  //   for (let item of rules) {
-  //     if (item.tel) {
-  //       item.rules.push({
-  //         rule: 'function',
-  //         validator: function() {
-  //           const phone = telSelector.inputmask.unmaskedvalue();
-  //           return phone.length === 10;
-  //         },
-  //         errorMessage: item.telError
-  //       });
-  //     }
-  //   }
-  // }
-
   const validation = new JustValidate(selector);
 
   for (let item of rules) {
@@ -40,9 +23,12 @@ export const validateForms = (selector, rules, afterSend) => {
   }
 
   validation.onSuccess((ev) => {
+    console.log("Complete!");
+    console.log(ev);
     let formData = new FormData(ev.target);
-
     let xhr = new XMLHttpRequest();
+
+    console.log(...formData);
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === 4) {
@@ -55,7 +41,7 @@ export const validateForms = (selector, rules, afterSend) => {
       }
     };
 
-    xhr.open("POST", "mail.php", true);
+    xhr.open("POST", "../mail.php", true);
     xhr.send(formData);
 
     ev.target.reset();

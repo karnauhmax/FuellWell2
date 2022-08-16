@@ -407,6 +407,73 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // forms
 
+  const mediaForm = document.querySelector(".media__form");
+
+  const rules1 = [
+    {
+      ruleSelector: ".media__mail",
+      rules: [
+        {
+          rule: "required",
+          errorMessage: "Email is required",
+        },
+        {
+          rule: "email",
+          errorMessage: "Email is invalid",
+        },
+      ],
+    },
+    {
+      ruleSelector: ".media__phone",
+      rules: [
+        {
+          rule: "minLength",
+          value: 8,
+          errorMessage: "Phone is invalid",
+          colorWrong: "blue",
+        },
+        {
+          rule: "required",
+          errorMessage: "Заполните имя!",
+          errorMessage: "Phone is required",
+        },
+      ],
+    },
+
+    {
+      ruleSelector: ".media__name",
+      rules: [
+        {
+          rule: "minLength",
+          value: 3,
+          errorMessage: "Name is invalid",
+        },
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+        },
+      ],
+    },
+
+    {
+      ruleSelector: ".media__company",
+      rules: [
+        {
+          rule: "minLength",
+          value: 3,
+          errorMessage: "Company is invalid",
+        },
+        {
+          rule: "required",
+          errorMessage: "Name is required",
+        },
+      ],
+    },
+  ];
+
+  function afterForm() {
+    console.log(1);
+  }
+
   validateForms(".media__form", rules1, afterForm);
-  const rules1 = [];
 });

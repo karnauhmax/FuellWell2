@@ -17183,6 +17183,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
 /* harmony import */ var gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! gsap/ScrollTrigger */ "./node_modules/gsap/ScrollTrigger.js");
 /* harmony import */ var _functions_validate_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./functions/validate-forms */ "./src/js/functions/validate-forms.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -17578,8 +17580,54 @@ window.addEventListener("DOMContentLoaded", function () {
   } // forms
 
 
+  var mediaForm = document.querySelector(".media__form");
+  var rules1 = [{
+    ruleSelector: ".media__mail",
+    rules: [{
+      rule: "required",
+      errorMessage: "Email is required"
+    }, {
+      rule: "email",
+      errorMessage: "Email is invalid"
+    }]
+  }, {
+    ruleSelector: ".media__phone",
+    rules: [{
+      rule: "minLength",
+      value: 8,
+      errorMessage: "Phone is invalid",
+      colorWrong: "blue"
+    }, _defineProperty({
+      rule: "required",
+      errorMessage: "Заполните имя!"
+    }, "errorMessage", "Phone is required")]
+  }, {
+    ruleSelector: ".media__name",
+    rules: [{
+      rule: "minLength",
+      value: 3,
+      errorMessage: "Name is invalid"
+    }, {
+      rule: "required",
+      errorMessage: "Name is required"
+    }]
+  }, {
+    ruleSelector: ".media__company",
+    rules: [{
+      rule: "minLength",
+      value: 3,
+      errorMessage: "Company is invalid"
+    }, {
+      rule: "required",
+      errorMessage: "Name is required"
+    }]
+  }];
+
+  function afterForm() {
+    console.log(1);
+  }
+
   (0,_functions_validate_forms__WEBPACK_IMPORTED_MODULE_3__.validateForms)(".media__form", rules1, afterForm);
-  var rules1 = [];
 });
 })();
 

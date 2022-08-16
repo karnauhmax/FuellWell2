@@ -36,7 +36,7 @@ try {
   $mail->Username   = 'phptestvalidatemxk@gmail.com'; // Логин на почте
   $mail->Password   = 'ruhqyjvqjcvazszn'; // Пароль на почте
   $mail->SMTPSecure = 'ssl';
-  $mail->Port       = 465;
+  $mail->Port       = 587;
 
   $mail->setFrom('krnhmx@gmail.com', 'Заявка с вашего сайта'); // Адрес самой почты и имя отправителя
 

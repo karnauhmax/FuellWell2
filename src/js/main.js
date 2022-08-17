@@ -1,5 +1,4 @@
 import Splide from "@splidejs/splide";
-import DynamicAdapt from "./functions/dynamicAdapt";
 import { burger } from "./functions/burger";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -377,31 +376,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   // ticker
-
-  const reportsTicker = document.querySelector(".reports__ticker-inner");
-  const benefitsTicker = document.querySelector(".benefits__ticker-inner");
-
-  for (let i = 0; i < 20; i++) {
-    const tickerItem = document.createElement("div");
-    tickerItem.classList.add("ticker__item");
-    tickerItem.innerHTML = `
-        <p>FUEL</p>
-        <p>well</p>
-        <p>eco </p>
-    `;
-    reportsTicker.append(tickerItem);
-  }
-
-  for (let i = 0; i < 20; i++) {
-    const tickerItem = document.createElement("div");
-    tickerItem.classList.add("ticker__item");
-    tickerItem.innerHTML = `
-        <p>FUEL</p>
-        <p>well</p>
-        <p>eco </p>
-    `;
-    benefitsTicker.append(tickerItem);
-  }
   // smooth scroll
 
   //contact

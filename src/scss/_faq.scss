@@ -75,11 +75,13 @@
 
   &-content {
    max-height: 0;
+   visibility: hidden;
    opacity: 0;
    transition: .5s all ease;
    will-change: max-height;
 
    &.active {
+    visibility: visible;
     opacity: 1;
     padding-top: 15px;
     box-sizing: content-box;

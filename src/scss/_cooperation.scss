@@ -3,34 +3,34 @@
  position: relative;
  overflow-x: hidden;
 
- // &::before {
- //  content: "";
- //  display: block;
- //  position: absolute;
- //  top: 20%;
- //  right: 0;
- //  width: 100%;
- //  max-width: 421px;
- //  height: 421px;
- //  background: rgba(0, 213, 228, 1);
- //  filter: blur(200px);
- //  z-index: -1;
+ &::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 20%;
+  right: 0;
+  width: 100%;
+  max-width: 421px;
+  height: 421px;
+  background: rgba(0, 213, 228, 1);
+  filter: blur(200px);
+  z-index: -1;
 
- //  @media screen and (max-width: 768px) {
- //   transform: translateX(35%);
- //  }
+  @media screen and (max-width: 768px) {
+   transform: translateX(35%);
+  }
 
- //  @media screen and (max-width: 576px) {
- //   top: 5%;
- //  }
+  @media screen and (max-width: 576px) {
+   top: 5%;
+  }
 
- //  @media screen and (max-width: 475px) {
- //   transform: translateX(80%);
- //   max-width: 321px;
- //   height: 321px;
+  @media screen and (max-width: 475px) {
+   transform: translateX(80%);
+   max-width: 321px;
+   height: 321px;
 
- //  }
- // }
+  }
+ }
 
  &__contact {
   margin-bottom: 0;

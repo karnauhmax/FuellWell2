@@ -3056,6 +3056,17 @@ a {
     height: 321px;
   }
 }
+.cooperation__contact {
+  margin-bottom: 0;
+  display: none;
+  text-align: center;
+}
+.cooperation__contact p {
+  margin-bottom: 20px;
+}
+.cooperation__contact.active {
+  display: block;
+}
 .cooperation__callback {
   text-align: center;
   margin-bottom: 140px;
@@ -3123,6 +3134,12 @@ a {
   grid-template-columns: repeat(3, minmax(310px, 1fr));
   gap: 30px;
   counter-reset: counter;
+  margin-bottom: 70px;
+}
+@media (max-width: 1480px) {
+  .cooperation__inner {
+    margin-bottom: calc(25px + 45 * ((100vw - 320px) / 1160));
+  }
 }
 @media screen and (max-width: 1024px) {
   .cooperation__inner {

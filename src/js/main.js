@@ -2,8 +2,13 @@ import Splide from "@splidejs/splide";
 import { burger } from "./functions/burger";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { DynamicAdapt } from "./functions/dynamicAdapt";
 
 window.addEventListener("DOMContentLoaded", () => {
+  //dynamic adapt
+  const da = new DynamicAdapt("max");
+  da.init();
+
   //videos
 
   class Video {

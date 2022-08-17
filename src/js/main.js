@@ -6,8 +6,7 @@ import { DynamicAdapt } from "./functions/dynamicAdapt";
 
 window.addEventListener("DOMContentLoaded", () => {
   //dynamic adapt
-  const da = new DynamicAdapt("max");
-  da.init();
+
 
   //videos
 

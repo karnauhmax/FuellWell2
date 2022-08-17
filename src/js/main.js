@@ -17,7 +17,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     render() {
       this.btn.addEventListener("click", (e) => {
-        console.log(this.video);
         if (this.video.paused == true) {
           this.video.play();
           this.video.setAttribute("controls", true);

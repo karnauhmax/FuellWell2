@@ -31,6 +31,19 @@
   }
  }
 
+ &__contact {
+  margin-bottom: 0;
+  display: none;
+  text-align: center;
+
+  & p {
+   margin-bottom: 20px;
+  }
+
+  &.active {
+   display: block;
+  }
+ }
 
 
  &__callback {
@@ -83,6 +96,7 @@
   grid-template-columns: repeat(3, minmax(310px, 1fr));
   gap: 30px;
   counter-reset: counter;
+  @include adaptiv-value(margin-bottom, 70, 25, 1);
 
   @media screen and (max-width: 1024px) {
    grid-template-columns: 1fr;

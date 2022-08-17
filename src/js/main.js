@@ -3,7 +3,6 @@ import DynamicAdapt from "./functions/dynamicAdapt";
 import { burger } from "./functions/burger";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { validateForms } from "./functions/validate-forms";
 
 window.addEventListener("DOMContentLoaded", () => {
   //videos
@@ -404,76 +403,16 @@ window.addEventListener("DOMContentLoaded", () => {
     `;
     benefitsTicker.append(tickerItem);
   }
+  // smooth scroll
 
-  // forms
+  //contact
 
-  const mediaForm = document.querySelector(".media__form");
+  const cooperationContact = document.querySelector(".cooperation__contact");
+  const contactBtn = document.querySelector(".cooperation__contact-link");
 
-  const rules1 = [
-    {
-      ruleSelector: ".media__mail",
-      rules: [
-        {
-          rule: "required",
-          errorMessage: "Email is required",
-        },
-        {
-          rule: "email",
-          errorMessage: "Email is invalid",
-        },
-      ],
-    },
-    {
-      ruleSelector: ".media__phone",
-      rules: [
-        {
-          rule: "minLength",
-          value: 8,
-          errorMessage: "Phone is invalid",
-          colorWrong: "blue",
-        },
-        {
-          rule: "required",
-          errorMessage: "Заполните имя!",
-          errorMessage: "Phone is required",
-        },
-      ],
-    },
-
-    {
-      ruleSelector: ".media__name",
-      rules: [
-        {
-          rule: "minLength",
-          value: 3,
-          errorMessage: "Name is invalid",
-        },
-        {
-          rule: "required",
-          errorMessage: "Name is required",
-        },
-      ],
-    },
-
-    {
-      ruleSelector: ".media__company",
-      rules: [
-        {
-          rule: "minLength",
-          value: 3,
-          errorMessage: "Company is invalid",
-        },
-        {
-          rule: "required",
-          errorMessage: "Name is required",
-        },
-      ],
-    },
-  ];
-
-  function afterForm() {
-    console.log(1);
-  }
-
-  validateForms(".media__form", rules1, afterForm);
+  contactBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(cooperationContact);
+    cooperationContact.classList.add("active");
+  });
 });

@@ -258,6 +258,9 @@ window.addEventListener("DOMContentLoaded", () => {
     ".calculator__consumption-label span"
   );
   const currency = document.querySelector(".calculator__currency");
+  const disclaimer = document.querySelector(".calculator__disclaimer");
+  const disclaimerCurrency = document.querySelector(".value-span");
+  const disclaimerLink = disclaimer.querySelector("a");
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -271,7 +274,8 @@ window.addEventListener("DOMContentLoaded", () => {
     ) {
       calculateResult(regionSelect);
       solution.closest(".calculator__results").classList.add("active");
-      submitBtn.classList.add("hide");
+      submitBtn.style.marginBottom = "25px";
+      submitBtn.innerHTML = "Calculate";
     }
   });
 
@@ -356,6 +360,10 @@ window.addEventListener("DOMContentLoaded", () => {
         savingsEmissionHead.innerHTML = "CO2 emission (kg)";
         currency.value = "EUR";
         consumptionLabel.innerHTML = "Fuel consumption L/100km";
+        disclaimerCurrency.innerHTML = "EU";
+        if(disclaimerLink) {
+          disclaimerLink.href = "https://www.cargopedia.net/europe-fuel-prices";
+        }
         break;
       case "GB":
         costLabel.innerHTML = "Fuel cost in GBP per gallon (GB)";
@@ -365,7 +373,10 @@ window.addEventListener("DOMContentLoaded", () => {
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
         consumptionLabel.innerHTML = "Fuel consumption MPG(GB)";
         currency.value = "GBP";
-
+        disclaimerCurrency.innerHTML = "GB";
+        if (disclaimerLink) {
+          disclaimerLink.href = "https://www.fleetnews.co.uk/costs/fuel-prices/";
+        }
         break;
       case "US":
         costLabel.innerHTML = "Fuel cost in USD per gallon (US)";
@@ -375,12 +386,14 @@ window.addEventListener("DOMContentLoaded", () => {
         savingsEmissionHead.innerHTML = "CO2 emission (lb)";
         consumptionLabel.innerHTML = "Fuel consumption MPG(US)";
         currency.value = "USD";
+        disclaimerCurrency.innerHTML = "USD";
+        if (disclaimerLink) {
+          disclaimerLink.href = "https://gasprices.aaa.com/";
+        }
         break;
     }
   }
 
-  // ticker
-  // smooth scroll
 
   //contact
 
@@ -392,4 +405,30 @@ window.addEventListener("DOMContentLoaded", () => {
     console.log(cooperationContact);
     cooperationContact.classList.add("active");
   });
+
+
+  //scroll
+  
+  const menuLinks = document.querySelectorAll("[data-goto]");
+
+  if (menuLinks.length > 0) {
+    menuLinks.forEach((menuLinks) => {
+      menuLinks.addEventListener("click", onMenuClick);
+    });
+
+    function onMenuClick(e) {
+      const menuLink = e.target;
+      if (menuLink.dataset.goto && document.querySelector(menuLink.dataset.goto)) {
+        const gotoBlock = document.querySelector(menuLink.dataset.goto);
+        const gotoBlockValue = gotoBlock.getBoundingClientRect().top + pageYOffset - document.querySelector('.header').offsetHeight;
+
+        window.scrollTo({
+          top: gotoBlockValue,
+          behavior: "smooth"
+        });
+
+        e.preventDefault();
+      }
+    }
+  }
 });
